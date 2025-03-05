@@ -75,4 +75,13 @@ router.post('/login', async (req, res) => {
   }
 });
 
+router.get('/login', (req, res) => {
+  res.render('login');
+});
+
+router.get('/some-route', (req, res) => {
+  // Your callback function logic here
+  res.send('Response from some-route');
+});
+
 module.exports = router;

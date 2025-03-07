@@ -1,13 +1,13 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Timer from './Timer';
 import MusicSnippet from './MusicSnippet';
 import handleGuess from './GuessHandler';
-import shuffleArray from '../utils/shuffleArray';
+import shuffleArray from '../../backend/utils/shuffleArray';
 
 const Game = ({ songs }: { songs: any[] }) => {
   const [currentSong, setCurrentSong] = useState(0);
   const [score, setScore] = useState(0);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
 
   const handleTimeUp = () => {
     alert('⏰ Time is up!');
@@ -23,6 +23,10 @@ const Game = ({ songs }: { songs: any[] }) => {
     setCurrentSong(currentSong + 1);
   };
 
+  if (!songs || songs.length === 0) {
+    return <p>No songs available</p>;
+  }
+
   if (currentSong >= songs.length) {
     return <p>Game Over! Your score: {score}</p>;
   }
@@ -32,6 +36,7 @@ const Game = ({ songs }: { songs: any[] }) => {
     choices = shuffleArray([songs[currentSong].name, ...songs.slice(1, 4).map(song => song.name)]);
   } catch (err) {
     setError('Failed to generate choices');
+    return <p>{error}</p>;
   }
 
   if (error) {

@@ -3,14 +3,15 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const axios = require('axios');
 
-const SPOTIFY_PROFILE_URL = 'https://api.spotify.com/v1/me'; // Added missing constant
+const SPOTIFY_PROFILE_URL = 'https://api.spotify.com/v1/me'; 
 
 const userSchema = new mongoose.Schema({
   username: { type: String, unique: true },
   password: String,
   preferences: [String],
-  spotifyId: { type: String, unique: true },
-  spotifyAccessToken: String,
+  spotifyId: { type: String, required: true, unique: true },
+  spotifyAccessToken: { type: String, required: true },
+  refreshToken: { type: String, required: true }
 });
 
 userSchema.pre('save', async function (next) {

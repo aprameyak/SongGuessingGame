@@ -6,7 +6,6 @@ const port = 5000;
 app.use(cors());
 
 app.get('/song', (req, res) => {
-  // For simplicity, we use a hardcoded song. In a real app, you might fetch this from a database.
   res.json({ song: 'Imagine' });
 });
 

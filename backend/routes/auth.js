@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
 const SpotifyWebApi = require('spotify-web-api-node');
-const User = require('../models/user'); // Changed to lowercase
+const User = require('../models/user');
 
 const spotifyApi = new SpotifyWebApi({
   clientId: process.env.SPOTIFY_CLIENT_ID,

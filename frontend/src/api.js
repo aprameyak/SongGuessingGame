@@ -15,5 +15,3 @@ export const fetchSongDetails = async (id) => {
     }
     return await response.json();
 };
-
-// ...existing code...

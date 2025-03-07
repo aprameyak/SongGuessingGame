@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 const authRoutes = require('./routes/auth');
 const { getRandomSongs, getUserTopTracks } = require('./spotifyApi');
-const User = require('./models/user'); // Changed to lowercase
+const User = require('./models/user');
 require('dotenv').config();
 const fetch = require('node-fetch');
 const SpotifyWebApi = require('spotify-web-api-node');
